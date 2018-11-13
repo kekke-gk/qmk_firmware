@@ -11,11 +11,16 @@
 
 char layer_state_str[24];
 
-const char *read_layer_state(void) {
+/* const char *read_layer_state(void) { */
+const char *read_layer_state(char base_layer) {
   switch (layer_state)
   {
   case L_BASE:
-    snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Default");
+    if(base_layer == 'Q') {
+        snprintf(layer_state_str, sizeof(layer_state_str), "Layer: QWERTY");
+    } else {
+        snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Dvorak");
+    }
     break;
   case L_RAISE:
     snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Raise");
